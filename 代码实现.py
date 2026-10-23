@@ -12,9 +12,9 @@ from sklearn.metrics import classification_report, confusion_matrix
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
-# ===== 1. 【符合临床规律】模拟数据 =====
+# ===== 1. 【符合临床规律】的模拟数据 =====
 # 输入真实文件路径，并在最前面加上转义字符r
-csv_path = r"D:\software\cnjjj\github\demo\模拟临床四诊数据.csv"
+csv_path = r"E:\09YJ\10科研\横向\教材撰写\模拟临床四诊数据.csv"
 # 如果读取报错乱码，把 utf-8 换成 gbk 试试
 df = pd.read_csv(csv_path, encoding='gbk')
 
