@@ -1,0 +1,6 @@
+id,tongue_color_score,pulse_rate,coating_thickness,fatigue_score,syndrome
+1,淡白舌,68次/分,薄苔,8,气虚证
+2,淡红舌,82次/分,腻苔,NaN,非气虚证
+3,红绛舌,150次/分,厚苔,2,非气虚证
+4,淡白舌,71次/分,薄苔,9,气虚证
+5,淡红舌,78次/分,薄苔,5,非气虚证
