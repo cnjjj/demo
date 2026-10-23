@@ -6,15 +6,14 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 
-
 # ===== 前置设置：解决图表中文乱码 =====
-#Windows 用户默认使用 SimHei，Mac 用户如果报错，请改为 'Arial Unicode MS'
-plt.rcParams['font.sans-serif'] = ['SimHei']
+# Windows 用户默认使用 SimHei，Mac 用户如果报错，请改为 'Arial Unicode MS'
+plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
 plt.rcParams['axes.unicode_minus'] = False
 
-# ===== 1. 【符合临床规律】的模拟数据 =====
+# ===== 1. 生成【符合临床规律】的模拟数据 =====
 # 输入真实文件路径，并在最前面加上转义字符r
-csv_path = r"E:\09YJ\10科研\横向\教材撰写\模拟临床四诊数据.csv"
+csv_path = r"/home/mw/project/模拟临床四诊数据.csv"
 # 如果读取报错乱码，把 utf-8 换成 gbk 试试
 df = pd.read_csv(csv_path, encoding='gbk')
 
@@ -48,17 +47,10 @@ plt.show()  # 注意：程序会在这里暂停，关闭弹出的图表后才会
 
 # 绘制特征重要性排序图
 importances = pd.Series(model.feature_importances_, index=X.columns)
-plt.figure(figsize=(4, 2))
+plt.figure(figsize=(8, 4))
 importances.sort_values().plot(kind='barh', color='teal')
-#plt.title('四诊特征对证型判别的重要性排序')
-plt.title('四诊特征对证型判别的重要性排序', fontsize=17) # 适当微调标题字号
-
-# 2. 【横纵坐标字体变大】：显式设置刻度字号为 12 或 14（默认是 10）
-plt.xticks(fontsize=15) # 横坐标（重要性数值）字号变大
-plt.yticks(fontsize=15) # 纵坐标（特征名称，如 pulse_rate 等）字号变大
-plt.tight_layout()
+plt.title('四诊特征对证型判别的重要性排序')
 plt.show()  # 关闭此图后继续
-
 
 # ===== 5. 交叉验证 =====
 scores = cross_val_score(model, X, y, cv=5)
